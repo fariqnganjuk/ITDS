@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+  </defs>
+  <!-- Background with safe padding -->
+  <rect width="512" height="512" rx="128" fill="url(#brandGrad)"/>
+  
+  <!-- Stylized Geometric Moon / Portal Architecture Icon -->
+  <circle cx="256" cy="256" r="140" stroke="#38bdf8" stroke-width="16" stroke-opacity="0.3" fill="none" />
+  <path d="M190 320L256 160L322 320" stroke="url(#accentGrad)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M214 274H298" stroke="url(#accentGrad)" stroke-width="24" stroke-linecap="round"/>
+  <circle cx="256" cy="160" r="18" fill="#38bdf8" />
+  <circle cx="340" cy="200" r="10" fill="#38bdf8" opacity="0.8"/>
+  <circle cx="172" cy="200" r="10" fill="#38bdf8" opacity="0.8"/>
+</svg>

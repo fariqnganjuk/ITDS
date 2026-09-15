@@ -1,0 +1,6 @@
+{
+  "name": "Platform Website Digital Agency",
+  "description": "Platform digital agency all-in-one dengan Public Site, Client Portal, Admin CMS, Estimator dinamis, 2FA, Enkripsi E2E, Sistem Tiket Dukungan, dan Audit Log Terpusat.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
