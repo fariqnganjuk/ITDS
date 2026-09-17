@@ -27,7 +27,7 @@ import { ClientContractsView } from './pages/portal/ClientContractsView';
 import { ClientSupportView } from './pages/portal/ClientSupportView';
 
 // Admin Views
-import { AdminLayout } from './pages/admin/AdminLayout';
+import { AdminLayout, AdminTabType } from './pages/admin/AdminLayout';
 import { AdminOverviewView } from './pages/admin/AdminOverviewView';
 import { CentralizedAuditLogView } from './pages/admin/CentralizedAuditLogView';
 import { SystemHealthAndScalingView } from './pages/admin/SystemHealthAndScalingView';
@@ -36,6 +36,10 @@ import { EstimatorRulesManagerView } from './pages/admin/EstimatorRulesManagerVi
 import { AdminLeadsView } from './pages/admin/AdminLeadsView';
 import { AdminSupportDeskView } from './pages/admin/AdminSupportDeskView';
 import { AdminTeamManagementView } from './pages/admin/AdminTeamManagementView';
+import { StaffWorkspaceView } from './pages/admin/StaffWorkspaceView';
+import { AdminOperationsView } from './pages/admin/AdminOperationsView';
+import { AdminContentCmsView } from './pages/admin/AdminContentCmsView';
+import { AdminGlobalSettingsView } from './pages/admin/AdminGlobalSettingsView';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState<string>(() => {
@@ -52,7 +56,10 @@ export default function App() {
   const [portalSubTab, setPortalSubTab] = useState<'overview' | 'chat' | 'invoices' | 'contracts' | 'support' | 'files'>('overview');
 
   // Admin sub-tabs
-  const [adminSubTab, setAdminSubTab] = useState<'overview' | 'audit-log' | 'system-health' | 'api' | 'estimator-rules' | 'leads' | 'support' | 'team'>('overview');
+  const [adminSubTab, setAdminSubTab] = useState<AdminTabType>(() => {
+    const user = getCurrentUser();
+    return user?.role === 'staff' ? 'workspace' : 'overview';
+  });
 
   useEffect(() => {
     const handleStorageUpdate = () => {
@@ -83,14 +90,21 @@ export default function App() {
         setShowLoginModal(true);
         return;
       }
-      if (path === '/admin/team') setAdminSubTab('team');
+      if (path === '/admin/workspace') setAdminSubTab('workspace');
+      else if (path === '/admin/operations') setAdminSubTab('operations');
+      else if (path === '/admin/content-cms') setAdminSubTab('content-cms');
+      else if (path === '/admin/global-settings') setAdminSubTab('global-settings');
+      else if (path === '/admin/team') setAdminSubTab('team');
       else if (path === '/admin/activity-log') setAdminSubTab('audit-log');
+      else if (path === '/admin/audit-log') setAdminSubTab('audit-log');
       else if (path === '/admin/system-health') setAdminSubTab('system-health');
       else if (path === '/admin/api') setAdminSubTab('api');
       else if (path === '/admin/estimator-rules') setAdminSubTab('estimator-rules');
       else if (path === '/admin/leads') setAdminSubTab('leads');
       else if (path === '/admin/support') setAdminSubTab('support');
-      else setAdminSubTab('overview');
+      else {
+        setAdminSubTab(currentUser?.role === 'staff' ? 'workspace' : 'overview');
+      }
     }
 
     setCurrentPath(path);
@@ -105,7 +119,11 @@ export default function App() {
   const handleLoginSuccess = (user: User) => {
     setCurrentUser(user);
     setShowLoginModal(false);
-    if (user.role === 'admin' || user.role === 'superadmin' || user.role === 'staff') {
+    if (user.role === 'staff') {
+      setAdminSubTab('workspace');
+      setCurrentPath('/admin/workspace');
+    } else if (user.role === 'admin' || user.role === 'superadmin') {
+      setAdminSubTab('overview');
       setCurrentPath('/admin');
     } else {
       setCurrentPath('/portal');
@@ -190,6 +208,10 @@ export default function App() {
             }}
           >
             {adminSubTab === 'overview' && <AdminOverviewView onNavigateTab={setAdminSubTab} />}
+            {adminSubTab === 'workspace' && <StaffWorkspaceView />}
+            {adminSubTab === 'operations' && <AdminOperationsView />}
+            {adminSubTab === 'content-cms' && <AdminContentCmsView />}
+            {adminSubTab === 'global-settings' && <AdminGlobalSettingsView />}
             {adminSubTab === 'team' && <AdminTeamManagementView />}
             {adminSubTab === 'audit-log' && <CentralizedAuditLogView />}
             {adminSubTab === 'system-health' && <SystemHealthAndScalingView />}

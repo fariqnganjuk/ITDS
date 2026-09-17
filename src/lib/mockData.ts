@@ -345,7 +345,7 @@ export const INITIAL_PROJECTS: Project[] = [
     budget: 39000000,
     currency: 'IDR',
     progressPercent: 65,
-    assignedStaffIds: ['usr_staff_01', 'usr_admin_01'],
+    assignedStaffIds: ['usr_fariq', 'usr_faizin', 'usr_ilham', 'usr_miftah', 'usr_toni'],
     encryptedNotes: 'U2FsdGVkX1+vGk... [Kredensial Sandbox ERP Terproteksi AES-256]',
     createdAt: '2026-08-22T08:00:00Z'
   },
@@ -363,7 +363,7 @@ export const INITIAL_PROJECTS: Project[] = [
     budget: 48000000,
     currency: 'IDR',
     progressPercent: 90,
-    assignedStaffIds: ['usr_staff_01'],
+    assignedStaffIds: ['usr_fariq', 'usr_toni', 'usr_miftah'],
     createdAt: '2026-07-08T10:00:00Z'
   }
 ];
@@ -449,7 +449,7 @@ export const INITIAL_DELIVERABLES: Deliverable[] = [
     fileType: 'document',
     fileSize: '4.2 MB',
     version: '1.4',
-    uploadedBy: 'Sarah Maharani (Lead UI/UX)',
+    uploadedBy: 'Ilham (System Analyst)',
     uploadedAt: '2026-09-01T15:20:00Z',
     notes: 'Diagram alur ERD database, schema relasi, dan rute REST API.'
   },
@@ -461,9 +461,9 @@ export const INITIAL_DELIVERABLES: Deliverable[] = [
     fileType: 'design',
     fileSize: '28.6 MB',
     version: '2.0',
-    uploadedBy: 'Sarah Maharani (Lead UI/UX)',
+    uploadedBy: 'Toni (Enterprise UI/UX)',
     uploadedAt: '2026-09-10T11:00:00Z',
-    notes: 'Komponen UI lengkap, ikon SVG, dan panduan palet warna WCAG AA.'
+    notes: 'Komponen UI lengkap, token variabel Figma, dan panduan palet warna WCAG AA.'
   },
   {
     id: 'dlv_003',
@@ -473,9 +473,21 @@ export const INITIAL_DELIVERABLES: Deliverable[] = [
     fileType: 'archive',
     fileSize: '42.1 MB',
     version: '0.9.3',
-    uploadedBy: 'Budi Santoso',
+    uploadedBy: 'Ahmad Fariq (Lead Full Stack Developer)',
     uploadedAt: '2026-09-13T16:45:00Z',
-    notes: 'Paket Android siap uji di perangkat internal via sideload.'
+    notes: 'Paket Android siap uji di sandbox internal via sideload.'
+  },
+  {
+    id: 'dlv_004',
+    projectId: 'prj_001',
+    title: 'SLA_Infra_AutoScaling_Config.yaml',
+    fileUrl: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80',
+    fileType: 'document',
+    fileSize: '1.8 MB',
+    version: '1.0',
+    uploadedBy: 'Miftah (IT Support & Infrastructure)',
+    uploadedAt: '2026-09-14T08:30:00Z',
+    notes: 'Spesifikasi manifes Kubernetes, auto-scaler HPA, dan panduan mitigasi DDoS.'
   }
 ];
 
